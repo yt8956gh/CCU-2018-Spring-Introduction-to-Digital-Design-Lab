@@ -1,8 +1,7 @@
 # DD
+2018 Spring
 
 Introduction to Digital Design Lab
-
-2018 Spring
 
 Lab homework:
 
