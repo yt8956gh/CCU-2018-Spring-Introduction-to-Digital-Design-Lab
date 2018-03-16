@@ -3,9 +3,10 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET = winrtrunner.exe
 DEPENDPATH += .
 INCLUDEPATH += .
+QT += widgets
 
 # Input
 HEADERS += widget.h

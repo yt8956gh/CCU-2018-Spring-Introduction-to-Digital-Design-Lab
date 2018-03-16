@@ -20,19 +20,19 @@ Widget::Widget(QWidget *parent) :
                       border-width: 2px;\
                       border-color: beige;}");
 
-    OK->setFont(QFont("consola", 20));
+    OK->setFont(QFont("consolas", 20));
     QObject::connect(OK,SIGNAL(clicked()),this,SLOT(OK_clicked()));
 
     Clear = new QPushButton(tr("init"),this);
     Clear->setGeometry(Width*0.25, Height*0.85, 120, 50);
     Clear->setText(tr("Clear"));
-    Clear->setStyleSheet("QPushButton  {color: black;\
+    Clear->setStyleSheet("QPushButton  {color: red;\
                          background-color: white;\
                          border-style: outset;\
                          border-width: 2px;\
                          border-color: beige;}");
 
-    Clear->setFont(QFont("consola", 20));
+    Clear->setFont(QFont("consolas", 20));
     QObject::connect(Clear,SIGNAL(clicked()),this,SLOT(Clear_clicked()));
 
 }
@@ -40,7 +40,7 @@ Widget::Widget(QWidget *parent) :
 void Widget::OK_clicked()
 {
     copy=1;//be condition of clear
-    update();
+    update();//強制更新畫面
     //qDebug()<<"OK";
 }
 
@@ -48,19 +48,23 @@ void Widget::OK_clicked()
 void Widget::Clear_clicked()
 {
     _lines.clear();//clear all lines
-    update();
+    update();//強制更新畫面
     //qDebug()<<"Clear";
 }
 
+//任何QPaint相關函式都應放在PaintEvent中
+//QPaint會適時傳入更新過的QPaintEvent，但仍會有遺漏，所以透過update()強制更新畫面
 void Widget::paintEvent(QPaintEvent *)
 {
     int i=0;
+    //先畫白色底
     QPainter whiter(this);
     whiter.setPen(Qt::white);
     whiter.setBrush(Qt::white);
     whiter.drawRect(0, 0, Width*0.5-1, Height*0.76);// initialize Canvas
     whiter.drawRect(Width*0.5+1, 0, Width*0.5-1, Height*0.76);
 
+    //設定黑色畫筆
     QPainter path(this);
     QPen pen(Qt::black, 20, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin);
     path.setPen(pen);
@@ -75,6 +79,7 @@ void Widget::paintEvent(QPaintEvent *)
         }
     }
 
+    //繪製右邊COPY
     if(copy==1)
     {
         for(i=0; i<_lines.size(); i++)

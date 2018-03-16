@@ -1,10 +1,10 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include<QWidget>
+#include <QWidget>
 #include<QPainter>
 #include<QMouseEvent>
-#include <QPushButton>
+#include <QtWidgets/QPushButton>
 #define Height 600
 #define Width 1000
 
