@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-3" LaunchTime="1525513070">
+  <File Type="PA-TCL" Name="adder.tcl"/>
+  <File Type="REPORTS-TCL" Name="adder_reports.tcl"/>
+  <File Type="RDS-RDS" Name="adder.vds"/>
+  <File Type="RDS-UTIL" Name="adder_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="adder_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="adder.dcp"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/lab8/adder.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../adder.v"/>
+        <Attr Name="ImportTime" Val="1524893531"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="adder"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/lab8/Nexys4.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../Nexys4.xdc"/>
+        <Attr Name="ImportTime" Val="1524459529"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>
